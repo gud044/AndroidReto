@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">APLICACION_RETO</string>
+    <string name="menu1">Calendario de citas</string>
+    <string name="menu2">Gestión de partners</string>
+    <string name="menu3">Gestión de pedidos</string>
+    <string name="menu4">Envíos a delegaciones</string>
 </resources>
