@@ -52,11 +52,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        SupportMapFragment mapFragment = SupportMapFragment.newInstance();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.mapView, mapFragment)
-                .commit();
 
     }
 }
