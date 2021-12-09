@@ -9,11 +9,15 @@
     tools:layout_editor_absoluteY="-23dp">
 
     <TextView
+        android:id="@+id/txtGamingGrandma"
         style="@style/Widget.MaterialComponents.Snackbar.TextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="261dp"
+        android:layout_height="68dp"
         android:layout_marginTop="44dp"
-        android:text="GRANDMA ACADEMY"
+        android:text="GAMING GRANDMA"
+        android:textAlignment="center"
+        android:textColor="#8E04A8"
+        android:textSize="25sp"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
@@ -21,8 +25,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="140dp"
-        android:layout_height="77dp"
+        android:layout_width="196dp"
+        android:layout_height="103dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
@@ -60,27 +64,17 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="16dp"
         android:text="@string/menu1"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/lbl_gmail" />
-
-    <Button
-        android:id="@+id/btnMenu2"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="52dp"
-        android:layout_marginTop="24dp"
-        android:text="@string/menu2"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnMenu1" />
 
     <Button
         android:id="@+id/btnMenu3"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="44dp"
         android:text="@string/menu3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMenu2" />
@@ -90,9 +84,19 @@
         android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="52dp"
-        android:layout_marginTop="48dp"
+        android:layout_marginTop="44dp"
         android:text="@string/menu4"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnMenu3" />
+
+    <Button
+        android:id="@+id/btnMenu2"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/menu2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMenu1" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
