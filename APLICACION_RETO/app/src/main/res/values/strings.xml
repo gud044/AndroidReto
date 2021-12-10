@@ -4,4 +4,5 @@
     <string name="menu2">Gestión de partners</string>
     <string name="menu3">Gestión de pedidos</string>
     <string name="menu4">Envíos a delegaciones</string>
+    <string name="agregar">Agregar</string>
 </resources>

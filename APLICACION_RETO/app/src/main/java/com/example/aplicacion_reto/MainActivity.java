@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        Button menu1 = findViewById(R.id.btnMenu1);
+        Intent calendarioIntent =new Intent(this, calendario.class);
 
 
 
@@ -37,8 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-        //hola asiddbaosnfd que tal eo eo eo
-        //Cambio 2
+
         //Listener Gmail
         gmail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -49,6 +50,14 @@ public class MainActivity extends AppCompatActivity {
                 String url="mailto:"+txt_gmail;
                 Intent intent =new Intent(Intent.ACTION_VIEW, Uri.parse(url));
                 startActivity(intent);
+            }
+        });
+
+        menu1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(calendarioIntent);
             }
         });
 
