@@ -20,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button menu1 = findViewById(R.id.btnMenu1);
-        Intent calendarioIntent =new Intent(this, calendario.class);
+        Intent calendarioIntent =new Intent(this, CalendarioActivity.class);
 
 
 

@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APLICACION_RETO">
         <activity
+            android:name=".CalendarioActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

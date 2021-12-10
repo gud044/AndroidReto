@@ -1,15 +1,14 @@
 package com.example.aplicacion_reto;
 
-import android.os.Bundle;
-
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.os.Bundle;
 
-public class calendario extends AppCompatActivity {
+public class CalendarioActivity extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.calendariolayout);
-
+        setContentView(R.layout.activity_calendario);
     }
 }
