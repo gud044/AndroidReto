@@ -9,33 +9,57 @@
 
     <CalendarView
         android:id="@+id/calendarView"
-        android:layout_width="403dp"
-        android:layout_height="322dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="327dp"
+        android:layout_height="301dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.511"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.037" />
 
     <Button
         android:id="@+id/btnAgregar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="28dp"
         android:text="@string/agregar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.094"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.65" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/txt_nombre"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="28dp"
         android:ems="10"
+        android:hint="Nombre"
         android:inputType="textPersonName"
         android:minHeight="48dp"
-        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.125"
         app:layout_constraintStart_toEndOf="@+id/btnAgregar"
-        app:layout_constraintTop_toBottomOf="@+id/calendarView" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.56" />
+
+    <EditText
+        android:id="@+id/txt_nota"
+        android:layout_width="214dp"
+        android:layout_height="48dp"
+        android:ems="10"
+        android:gravity="start|top"
+        android:hint="Nota"
+        android:inputType="textMultiLine"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.812"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.672"
+        tools:ignore="SpeakableTextPresentCheck" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
