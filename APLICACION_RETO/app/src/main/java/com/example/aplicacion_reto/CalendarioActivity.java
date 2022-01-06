@@ -16,6 +16,7 @@ import org.w3c.dom.Element;
 import org.xml.sax.SAXException;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Calendar;
 
@@ -42,7 +43,7 @@ public class CalendarioActivity extends AppCompatActivity {
         CalendarView calendario=findViewById(R.id.calendarView);
         EditText nombre_texto=findViewById(R.id.txt_nombre);
         EditText nota_texto=findViewById(R.id.txt_nota);
-
+        Button boton_prueba=findViewById(R.id.boton_prueba);
 
         //Coge el año,mes y día del CalendarView
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
@@ -79,7 +80,22 @@ public class CalendarioActivity extends AppCompatActivity {
                 }
             }
         });
+
+        boton_prueba.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String archivo_nombre="citas.xml";
+
+                File file = new File(getFilesDir(), archivo_nombre);
+
+
+                Toast toast1= Toast.makeText(getApplicationContext(),""+file.getAbsoluteFile(), Toast.LENGTH_LONG);
+                toast1.show();
+
+            }
+        });
     }
+
 
     //Método para convertir de argumentos int a fecha en String
     public String ConvertirAFecha(int ano,int mes,int dia){
@@ -87,8 +103,11 @@ public class CalendarioActivity extends AppCompatActivity {
         return fecha;
     }
 
-    public static void EscribirCitas(String nombre, String fecha, String descripcion) throws ParserConfigurationException, IOException, SAXException, TransformerException {
-        File file =new File("C:\\Users\\aunai\\Documents\\AndroidReto\\APLICACION_RETO\\app\\src\\main\\res\\XMLPropios");
+    public void EscribirCitas(String nombre, String fecha, String descripcion) throws ParserConfigurationException, IOException, SAXException, TransformerException {
+
+
+        File file = new File(getFilesDir(), "citas.xml");
+        //data/data/com.example.aplicacion_reto/files/citas.xml
 
         // ① Obtenga la instancia de fábrica del analizador DocumentBuilder DocumentBuilderFactory y obtenga el objeto DocumentBuilder
         DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -126,7 +145,8 @@ public class CalendarioActivity extends AppCompatActivity {
         //DOMSource source = new DOMSource(doc);
         Source source = new DOMSource(doc);
         //StreamResult result = new StreamResult();
-        Result result = new StreamResult(file);
+        Result result = new StreamResult(String.valueOf(file));
         transformer.transform (source, result); // Transformar XML ==> Fuente en resultado
+
     }
 }

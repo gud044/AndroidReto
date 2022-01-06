@@ -1,7 +1,8 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?><citas>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<citas>
     <cita>
-        <nombre/>
-        <fecha/>
-        <descripcion/>
+        <nombre>nombre</nombre>
+        <fecha>fecha</fecha>
+        <descripcion>descripcion</descripcion>
     </cita>
 </citas>
