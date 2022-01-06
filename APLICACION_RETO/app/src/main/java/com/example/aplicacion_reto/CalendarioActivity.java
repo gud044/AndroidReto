@@ -88,7 +88,7 @@ public class CalendarioActivity extends AppCompatActivity {
     }
 
     public static void EscribirCitas(String nombre, String fecha, String descripcion) throws ParserConfigurationException, IOException, SAXException, TransformerException {
-        File file =new File("C:\\Users\\aunai\\Documents\\AndroidReto\\APLICACION_RETO\\app\\src\\main\\res\\XMLPropios");
+        File file =new File("\\");
 
         // ① Obtenga la instancia de fábrica del analizador DocumentBuilder DocumentBuilderFactory y obtenga el objeto DocumentBuilder
         DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
@@ -104,9 +104,9 @@ public class CalendarioActivity extends AppCompatActivity {
         Element fecha1 = doc.createElement("fecha");
         Element descripcion1 = doc.createElement("descripcion");
         // Establecer valores para nodos secundarios
-        nombre1.setTextContent ("NOMBRE");
-        fecha1.setTextContent ("FECHA");
-        descripcion1.setTextContent ("NOTA");
+        nombre1.setTextContent (nombre);
+        fecha1.setTextContent (nombre);
+        descripcion1.setTextContent (nombre);
         // Añadir nodo hijo a persona
         person.appendChild(nombre1);
         person.appendChild(fecha1);
