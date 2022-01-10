@@ -30,9 +30,9 @@ public class MainActivity extends AppCompatActivity {
         Button menu3 = findViewById(R.id.btnMenu3);
         Button menu4 = findViewById(R.id.btnMenu4);
         Intent calendarioIntent =new Intent(this, CalendarioActivity.class);
-        Intent partnersIntent =new Intent(this, CalendarioActivity.class);
-        Intent pedidosIntent =new Intent(this, CalendarioActivity.class);
-        Intent enviosIntent =new Intent(this, CalendarioActivity.class);
+        Intent partnersIntent =new Intent(this, PartnersActivity.class);
+        //Intent pedidosIntent =new Intent(this, falta el layout .class);
+        Intent enviosIntent =new Intent(this, activity_envios.class);
 
         Button btnMaps = findViewById(R.id.btnMaps);
 
