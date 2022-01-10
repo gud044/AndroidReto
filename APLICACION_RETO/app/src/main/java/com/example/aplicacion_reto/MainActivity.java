@@ -39,12 +39,22 @@ public class MainActivity extends AppCompatActivity {
         Button btnMaps = findViewById(R.id.btnMaps);
 
 
+        Button btnPedidos = findViewById(R.id.btnMenu3);
+
 
         TextView telefono=findViewById(R.id.lbl_telefono);
         TextView gmail=findViewById(R.id.lbl_gmail);
 
         verificarPermisos();
 
+
+        btnPedidos.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(MainActivity.this, MainPedidosActivity.class);
+                startActivity(intent);
+            }
+        });
 
         //Listener Telefono movil
         telefono.setOnClickListener(new View.OnClickListener() {
