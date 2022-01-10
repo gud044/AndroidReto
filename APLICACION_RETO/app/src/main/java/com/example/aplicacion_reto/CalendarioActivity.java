@@ -1,8 +1,10 @@
 package com.example.aplicacion_reto;
 
+import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -17,6 +19,7 @@ import org.xml.sax.SAXException;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Calendar;
 
 import javax.xml.parsers.DocumentBuilder;
@@ -43,6 +46,10 @@ public class CalendarioActivity extends AppCompatActivity {
         EditText nombre_texto=findViewById(R.id.txt_nombre);
         EditText nota_texto=findViewById(R.id.txt_nota);
 
+        ActivityResultLauncher<Intent> activityResultLauncher;
+        ArrayList<Cita> datos = new ArrayList<>();
+        File directorio = new File("/data/data/com.example.pruebaxml/files");
+        File ficheroXML = new File(directorio,"personas.xml");
 
         //Coge el año,mes y día del CalendarView
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {

@@ -12,7 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APLICACION_RETO">
         <activity
-            android:name=".activity_maps"
+            android:name=".activity_envios"
+            android:exported="true" />
+        <activity
+            android:name=".PartnersActivity"
             android:exported="true" />
         <activity
             android:name=".CalendarioActivity"
