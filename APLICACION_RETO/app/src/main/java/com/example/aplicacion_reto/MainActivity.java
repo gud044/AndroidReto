@@ -26,7 +26,13 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button menu1 = findViewById(R.id.btnMenu1);
+        Button menu2 = findViewById(R.id.btnMenu2);
+        Button menu3 = findViewById(R.id.btnMenu3);
+        Button menu4 = findViewById(R.id.btnMenu4);
         Intent calendarioIntent =new Intent(this, CalendarioActivity.class);
+        Intent partnersIntent =new Intent(this, CalendarioActivity.class);
+        Intent pedidosIntent =new Intent(this, CalendarioActivity.class);
+        Intent enviosIntent =new Intent(this, CalendarioActivity.class);
 
         Button btnMaps = findViewById(R.id.btnMaps);
 
@@ -68,6 +74,30 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 startActivity(calendarioIntent);
+            }
+        });
+
+        menu2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(partnersIntent);
+            }
+        });
+
+        menu3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(pedidosIntent);
+            }
+        });
+
+        menu4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                startActivity(enviosIntent);
             }
         });
 
