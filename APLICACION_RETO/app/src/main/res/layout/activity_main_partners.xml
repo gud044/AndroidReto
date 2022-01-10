@@ -8,7 +8,7 @@
 
     <Button
         android:id="@+id/btnAlta"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Dar de alta"
@@ -18,7 +18,7 @@
 
     <Button
         android:id="@+id/btnPartners"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="216dp"
         android:text="Partners"
@@ -28,7 +28,7 @@
 
     <Button
         android:id="@+id/button3"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Button"
@@ -38,7 +38,7 @@
 
     <Button
         android:id="@+id/button4"
-        android:layout_width="wrap_content"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Button"
