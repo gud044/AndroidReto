@@ -4,8 +4,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Xml;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
@@ -15,10 +17,15 @@ import android.widget.Toast;
 
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+import org.xmlpull.v1.XmlSerializer;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -45,9 +52,10 @@ public class CalendarioActivity extends AppCompatActivity {
         CalendarView calendario=findViewById(R.id.calendarView);
         EditText nombre_texto=findViewById(R.id.txt_nombre);
         EditText nota_texto=findViewById(R.id.txt_nota);
+        Button boton_prueba=findViewById(R.id.boton_prueba);
 
         ActivityResultLauncher<Intent> activityResultLauncher;
-        ArrayList<Cita> datos = new ArrayList<>();
+        //ArrayList<Cita> datos = new ArrayList<>();
         File directorio = new File("/data/data/com.example.pruebaxml/files");
         File ficheroXML = new File(directorio,"personas.xml");
 
@@ -61,22 +69,11 @@ public class CalendarioActivity extends AppCompatActivity {
             }
         });
 
-        boton_agregar.setOnClickListener(new View.OnClickListener() {
+        boton_prueba.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String nombre,nota;
-                nombre=nombre_texto.getText().toString();
-                nota=nota_texto.getText().toString();
-
                 try {
-                    //if(!nombre_texto.getText().toString().isEmpty() || !nota_texto.getText().toString().isEmpty()){
-                     //   EscribirCitas(nombre,fecha,nota);
-                    //}else{
-                      //  Toast toast1= Toast.makeText(getApplicationContext(),"Tiene que rellenar los campos", Toast.LENGTH_LONG);
-                      //  toast1.show();
-                    EscribirCitas("nombre","fecha","descripcion");
-                } catch (TransformerException e) {
-                    e.printStackTrace();
+                    pruebaGaizka();
                 } catch (IOException e) {
                     e.printStackTrace();
                 } catch (SAXException e) {
@@ -84,6 +81,33 @@ public class CalendarioActivity extends AppCompatActivity {
                 } catch (ParserConfigurationException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        boton_agregar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String nombre,nota;
+                nombre=nombre_texto.getText().toString();
+                nota=nota_texto.getText().toString();
+
+
+                    if(!nombre_texto.getText().toString().isEmpty() || !nota_texto.getText().toString().isEmpty()){
+                        try {
+                            EscribirCitas(nombre,fecha,nota);
+                        } catch (ParserConfigurationException e) {
+                            e.printStackTrace();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        } catch (SAXException e) {
+                            e.printStackTrace();
+                        } catch (TransformerException e) {
+                            e.printStackTrace();
+                        }
+
+                    }else{
+                        Toast toast1= Toast.makeText(getApplicationContext(),"Tiene que rellenar los campos", Toast.LENGTH_LONG);
+                        toast1.show();}
             }
         });
     }
@@ -94,46 +118,72 @@ public class CalendarioActivity extends AppCompatActivity {
         return fecha;
     }
 
-    public static void EscribirCitas(String nombre, String fecha, String descripcion) throws ParserConfigurationException, IOException, SAXException, TransformerException {
-        File file =new File("\\");
+    public void EscribirCitas(String nombre, String fecha, String descripcion) throws ParserConfigurationException, IOException, SAXException, TransformerException {
+        File file =new File(getFilesDir(),"cita.xml");
+        file.createNewFile();
+        Toast toast1 = Toast.makeText(getApplicationContext(), ""+file.getAbsolutePath(), Toast.LENGTH_SHORT);
+        toast1.show();
+        Toast toast = Toast.makeText(getApplicationContext(), ""+file.exists(), Toast.LENGTH_SHORT);
+        toast.show();
 
-        // ① Obtenga la instancia de fábrica del analizador DocumentBuilder DocumentBuilderFactory y obtenga el objeto DocumentBuilder
-        DocumentBuilder newDocumentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-        // ② Obtener un objeto de documento no vacío asociado con el archivo de disco
-        Document doc = newDocumentBuilder.parse(file);
-        // ③ Obtener el nodo raíz del objeto de documento a través del objeto de documento
-        Element root = doc.getDocumentElement();
 
-        // Crear un nuevo nodo de persona
-        Element person = doc.createElement("cita");
-        // Crear varios nodos secundarios de persona
-        Element nombre1 = doc.createElement("nombre");
-        Element fecha1 = doc.createElement("fecha");
-        Element descripcion1 = doc.createElement("descripcion");
-        // Establecer valores para nodos secundarios
-        nombre1.setTextContent (nombre);
-        fecha1.setTextContent (nombre);
-        descripcion1.setTextContent (nombre);
-        // Añadir nodo hijo a persona
-        person.appendChild(nombre1);
-        person.appendChild(fecha1);
-        person.appendChild(descripcion1);
-        // Establecer el valor para la identificación de la persona
-        //person.setAttribute("id", "3");
-        // Agregar persona al nodo raíz
-        root.appendChild(person);
+    }
 
-        // Nota: El archivo XML se carga en la memoria. La modificación también se encuentra en la memoria ==》 Por lo tanto, los datos en la memoria deben sincronizarse con el disco.
-        /*
-         * static TransformerFactory newInstance (): Obtenga una nueva instancia de TransformerFactory.
-         * abstract Transformer newTransformer (): crea un nuevo transformador que realiza una copia desde el origen al resultado.
-         * transformación vacía abstracta (Source xmlSource, Result outputTarget): transforma la fuente XML en un resultado.
-         */
-        Transformer transformer = TransformerFactory.newInstance().newTransformer();
-        //DOMSource source = new DOMSource(doc);
-        Source source = new DOMSource(doc);
-        //StreamResult result = new StreamResult();
-        Result result = new StreamResult(file);
-        transformer.transform (source, result); // Transformar XML ==> Fuente en resultado
+
+
+    public void PruebaSerializer(String nombre, String fecha, String descripcion) throws IOException {
+        File archivoXML = new File(getFilesDir(),"cita.xml");
+        if (!archivoXML.exists()){
+            archivoXML.createNewFile();
+        }
+
+        Toast toast1 = Toast.makeText(getApplicationContext(), ""+archivoXML.getAbsolutePath(), Toast.LENGTH_SHORT);
+        toast1.show();
+        Toast toast = Toast.makeText(getApplicationContext(), ""+archivoXML.exists(), Toast.LENGTH_SHORT);
+        toast.show();
+
+
+        XmlSerializer xmlSerializer = Xml.newSerializer();
+        OutputStreamWriter osWriter = new OutputStreamWriter(openFileOutput(archivoXML.getName().toString(), Context.MODE_APPEND));
+        xmlSerializer.setOutput(osWriter);
+
+        xmlSerializer.startTag("","root");
+        xmlSerializer.startTag("","citas");
+        xmlSerializer.startTag("","cita");
+        xmlSerializer.startTag("","numero");
+        xmlSerializer.text("1");
+        xmlSerializer.endTag("","numero");
+        xmlSerializer.startTag("","nombre");
+        xmlSerializer.text("Este es el nombre");
+        xmlSerializer.endTag("","nombre");
+        xmlSerializer.endTag("","cita");
+        xmlSerializer.endTag("","citas");
+        xmlSerializer.endTag("", "root");
+        xmlSerializer.endDocument();
+        osWriter.close();
+
+//        xmlSerializer.startTag("","descripcion");
+//        xmlSerializer.text(descripcion);
+//        xmlSerializer.endTag("","descripcion");
+    }
+
+    public void pruebaGaizka() throws IOException, SAXException, ParserConfigurationException {
+        File archivoXML = new File(getFilesDir(),"cita.xml");
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        DocumentBuilder documentBuilder = dbf.newDocumentBuilder();
+        Document document = documentBuilder.parse( archivoXML);
+
+        document.getDocumentElement().normalize();
+
+        NodeList listaCitas = document.getElementsByTagName("cita");
+        for (int temp = 0; temp < listaCitas.getLength(); temp++) {
+            Node nodo = listaCitas.item(temp);
+            if (nodo.getNodeType() == Node.ELEMENT_NODE) {
+                Element element = (Element) nodo;
+
+                Toast toast = Toast.makeText(getApplicationContext(), ""+element.getElementsByTagName("numero").item(0).getTextContent()+", "+element.getElementsByTagName("nombre").item(0).getTextContent(), Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        }
     }
 }
