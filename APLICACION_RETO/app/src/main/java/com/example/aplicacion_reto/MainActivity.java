@@ -126,6 +126,8 @@ public class MainActivity extends AppCompatActivity {
                 {
                     //Insertamos 5 usuarios de ejemplo
 
+                        db.execSQL("INSERT INTO Almacen_Deleg (descripcion) " +
+                                "VALUES ('Ejemplo')");
                     //Cerramos la base de datos
                     db.close();
                 }
