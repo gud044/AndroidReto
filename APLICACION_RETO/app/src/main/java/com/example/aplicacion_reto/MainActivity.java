@@ -7,6 +7,7 @@ import androidx.core.content.ContextCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -25,6 +26,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button btnPruebaBDD = findViewById(R.id.btnPruebaBDD);
         Button menu1 = findViewById(R.id.btnMenu1);
         Button menu2 = findViewById(R.id.btnMenu2);
         Button menu3 = findViewById(R.id.btnMenu3);
@@ -111,7 +113,24 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        btnPruebaBDD.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                UsuariosSQLiteHelper usdbh =
+                        new UsuariosSQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
 
+                SQLiteDatabase db = usdbh.getWritableDatabase();
+
+                //Si hemos abierto correctamente la base de datos
+                if(db != null)
+                {
+                    //Insertamos 5 usuarios de ejemplo
+
+                    //Cerramos la base de datos
+                    db.close();
+                }
+            }
+        });
 
     }
     @RequiresApi(api = Build.VERSION_CODES.M)
