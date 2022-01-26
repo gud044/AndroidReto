@@ -84,28 +84,27 @@ public class CalendarioActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-
-                int horas,minutos;
-                horas=reloj.getHour();
-                minutos=reloj.getMinute();
+                int horas=reloj.getHour();
+                int minutos=reloj.getMinute();
                 hora=horas+":"+minutos;
 
 
-                UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
-                SQLiteDatabase db = usdbh.getWritableDatabase();
 
                 if(nota_texto.getText().toString().length()>0) {
                     String descripcion=nota_texto.getText().toString();
-                 db.execSQL("INSERT INTO Citas(fecha,descripcion,hora) VALUES (fecha,descripcion,hora)");
+                    UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
+                    SQLiteDatabase db = usdbh.getWritableDatabase();
+                    db.execSQL("INSERT INTO Citas(fecha,descripcion,hora) VALUES (fecha,descripcion,hora)");
                 }else{
-
-                    Toast toast=Toast.makeText(this,"Tiene que poner una descripción",Toast.LENGTH_SHORT);
+                    Toast toast =Toast.makeText(getApplicationContext(),"Tiene que poner una descripción ", Toast.LENGTH_SHORT);
+                    toast.show();
                 }
             }
         });
 
 
     }
+
     //Método para convertir de argumentos int a fecha en String
     public String ConvertirAFecha(int ano,int mes,int dia){
         String fecha=dia+"/"+mes+"/"+ano;
