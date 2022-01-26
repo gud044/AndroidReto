@@ -63,6 +63,7 @@ public class CalendarioActivity extends AppCompatActivity {
 
         TimePicker reloj=(TimePicker)findViewById(R.id.id_reloj);
         reloj.setIs24HourView(true);
+        reloj.setHour(reloj.getHour()+1);
 
         Button boton_agregar=findViewById(R.id.btnAgregar);
         CalendarView calendario=findViewById(R.id.calendarView);
@@ -94,7 +95,10 @@ public class CalendarioActivity extends AppCompatActivity {
                     String descripcion=nota_texto.getText().toString();
                     UsuariosSQLiteHelper usdbh = new UsuariosSQLiteHelper(getApplicationContext(), "DBUsuarios", null, 1);
                     SQLiteDatabase db = usdbh.getWritableDatabase();
-                    db.execSQL("INSERT INTO Citas(fecha,descripcion,hora) VALUES (fecha,descripcion,hora)");
+                    db.execSQL("INSERT INTO Citas(fecha,descripcion,hora)"+"VALUES ('"+fecha+"','"+descripcion+"','"+hora+"')");
+                    db.close();
+                    Toast toast =Toast.makeText(getApplicationContext(),"Cita añadida correctar: "+fecha+" - "+hora+" - "+descripcion, Toast.LENGTH_SHORT);
+                    toast.show();
                 }else{
                     Toast toast =Toast.makeText(getApplicationContext(),"Tiene que poner una descripción ", Toast.LENGTH_SHORT);
                     toast.show();
