@@ -16,7 +16,7 @@ public class UsuariosSQLiteHelper extends SQLiteOpenHelper {
 
 
     String sqlCreate1 = "CREATE TABLE Comerciales (idComercial INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, usuario TEXT, nombre TEXT, apellido TEXT, contraseña TEXT)";
-    String sqlCreate2 = "CREATE TABLE Citas (idCita INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, fecha DATETIME NOT NULL, descripcion TEXT)";
+    String sqlCreate2 = "CREATE TABLE Citas (idCita INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, fecha DATETIME NOT NULL, descripcion TEXT, hora TEXT)";
     String sqlCreate3 = "CREATE TABLE Partners (idPartner INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, nombre TEXT, direccion TEXT, poblacion TEXT, cif TEXT, telefono TEXT, email TEXT, idComercial INTEGER, CONSTRAINT ck_idComerial FOREIGN KEY (idComercial) REFERENCES Comerciales (idComercial))";
     String sqlCreate4 = "CREATE TABLE Cab_Pedidos (idPedido INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, idComercial INTEGER, idPartner INTEGER, fechaPedido DATETIME, CONSTRAINT ck_idPartner FOREIGN KEY (idPartner) REFERENCES Partners (idPartner), CONSTRAINT ck_idComerial FOREIGN KEY (idComercial) REFERENCES Comerciales (idComercial))";
     String sqlCreate5 = "CREATE TABLE Lin_Pedidos (idPedido INTEGER NOT NULL, linea INTEGER, idAlmacen INTEGER, cantidad INTEGER, precio INTEGER, PRIMARY KEY(idPedido, linea), CONSTRAINT ck_idPedido FOREIGN KEY (idPedido) REFERENCES Cab_Pedidos (idPedido), CONSTRAINT ck_idAlmacen FOREIGN KEY (idAlmacen) REFERENCES Almacen_Deleg (idAlmacen))";
