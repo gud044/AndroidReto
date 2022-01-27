@@ -12,12 +12,13 @@
         <entry key="..\:/Users/aunai/Documents/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_main.xml" value="0.14764492753623187" />
         <entry key="..\:/Users/aunai/Documents/AndroidReto/APLICACION_RETO/app/src/main/res/layout/calendario_layout.xml" value="0.22644927536231885" />
         <entry key="..\:/Users/aunai/Documents/AndroidReto/APLICACION_RETO/app/src/main/res/layout/calendariolayout.xml" value="0.121875" />
+        <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_alta.xml" value="0.22056159420289856" />
         <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_calendario.xml" value="0.264" />
         <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_dar_alta.xml" value="0.264" />
         <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_envios.xml" value="0.14221014492753623" />
         <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_main_partners.xml" value="0.264" />
-        <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_partners.xml" value="0.14221014492753623" />
+        <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_partners.xml" value="0.264" />
         <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_pedidos.xml" value="0.264" />
         <entry key="..\:/Users/isadm/Documents/GitHub/AndroidReto/APLICACION_RETO/app/src/main/res/layout/activity_ver_pedidos.xml" value="0.176" />
       </map>
@@ -28,5 +29,12 @@
   </component>
   <component name="ProjectType">
     <option name="id" value="Android" />
+  </component>
+  <component name="VisualizationToolProject">
+    <option name="state">
+      <ProjectState>
+        <option name="scale" value="0.264" />
+      </ProjectState>
+    </option>
   </component>
 </project>

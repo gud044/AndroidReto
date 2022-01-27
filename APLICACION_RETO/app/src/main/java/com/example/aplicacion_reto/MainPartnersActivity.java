@@ -18,7 +18,7 @@ public class MainPartnersActivity extends AppCompatActivity {
         darAlta.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent lanzar_darAlta = new Intent(MainPartnersActivity.this, DarAltaActivity.class);
+                Intent lanzar_darAlta = new Intent(MainPartnersActivity.this, AltaActivity.class);
                 startActivity(lanzar_darAlta);
             }
         });

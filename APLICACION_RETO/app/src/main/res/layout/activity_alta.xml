@@ -4,14 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".DarAltaActivity">
+    tools:context=".AltaActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="84dp"
-        android:text="Datos del Partner"
+        android:layout_marginTop="56dp"
+        android:text="Informacion del Partner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -71,7 +71,7 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Telefono"
-        android:inputType="phone"
+        android:inputType="number"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtCIF" />
@@ -83,18 +83,31 @@
         android:layout_marginTop="24dp"
         android:ems="10"
         android:hint="Email"
-        android:inputType="textEmailAddress"
+        android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtTelefono" />
+
+    <EditText
+        android:id="@+id/edtComercial"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:ems="10"
+        android:hint="idComercial"
+        android:inputType="number"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
 
     <Button
         android:id="@+id/btnAlta2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Dar de Alta"
+        android:layout_marginTop="32dp"
+        android:text="Dar de alta"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edtEmail" />
+        app:layout_constraintTop_toBottomOf="@+id/edtComercial" />
 </androidx.constraintlayout.widget.ConstraintLayout>
