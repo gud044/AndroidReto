@@ -2,6 +2,7 @@ package com.example.aplicacion_reto;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.View;
@@ -41,15 +42,30 @@ public class AltaActivity extends AppCompatActivity {
 
                         SQLiteDatabase db = usdbh.getWritableDatabase();
 
+
+
                         //Si hemos abierto correctamente la base de datos
                         if (db != null) {
                             //Insertamos 5 usuarios de ejemplo
+                            Cursor c = db.rawQuery("SELECT idComercial FROM Comerciales WHERE idComercial = " + vcomercial,null);
 
-                            db.execSQL("INSERT INTO Partners (nombre, direccion, poblacion, cif, telefono, email, idComercial) " +
-                                    "VALUES ('" + vnombre +"', '"+ vdireccion +"', '"+ vpoblacion +"', '"+ vcif +"', '"+ vtelefono +"', '"+ vemail +"', "+ vcomercial +")");
-                            //Cerramos la base de datos
+                            if(c.moveToFirst()){
+                                db.execSQL("INSERT INTO Partners (nombre, direccion, poblacion, cif, telefono, email, idComercial) " +
+                                        "VALUES ('" + vnombre +"', '"+ vdireccion +"', '"+ vpoblacion +"', '"+ vcif +"', '"+ vtelefono +"', '"+ vemail +"', "+ vcomercial +")");
+                                //Cerramos la base de datos
+                                Toast correcto = Toast.makeText(getApplicationContext(), "El partner se ha dado de alta correctamente.", Toast.LENGTH_SHORT);
+                                correcto.show();
+                            }else{
+                                Toast caviso = Toast.makeText(getApplicationContext(), "El comercial introducido no existe, introduzca uno existente por favor.", Toast.LENGTH_SHORT);
+                                caviso.show();
+                            }
+
+
                             db.close();
                         }
+                    }else{
+                        Toast aviso = Toast.makeText(getApplicationContext(), "Introduzca todos los datos por favor.", Toast.LENGTH_SHORT);
+                        aviso.show();
                     }
             }
         });
